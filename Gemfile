@@ -12,12 +12,6 @@ gem "propshaft"
 # Fetch and parse RSS Feed
 gem "faraday"
 
-# Admin interface
-gem "madmin"
-
-# Background job
-gem "solid_queue"
-
 # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 gem "rubocop-rails-omakase", require: false
 
