@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_10_032115) do
-  create_table "chapters", force: :cascade do |t|
+ActiveRecord::Schema[8.0].define(version: 2025_02_10_042527) do
+  create_table "manga_tracker_chapters", force: :cascade do |t|
     t.integer "manga_id", null: false
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["manga_id"], name: "index_chapters_on_manga_id"
+    t.index ["manga_id"], name: "index_manga_tracker_chapters_on_manga_id"
   end
 
-  create_table "manga", force: :cascade do |t|
+  create_table "manga_tracker_manga", force: :cascade do |t|
     t.string "title"
     t.string "feed_source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "chapters", "mangas"
+  add_foreign_key "manga_tracker_chapters", "manga_tracker_manga", column: "manga_id"
 end
