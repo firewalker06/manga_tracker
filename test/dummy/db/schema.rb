@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_10_042527) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_01_124210) do
   create_table "manga_tracker_chapters", force: :cascade do |t|
     t.integer "manga_id", null: false
     t.string "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_042527) do
     t.string "feed_source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reader_url"
   end
 
   add_foreign_key "manga_tracker_chapters", "manga_tracker_manga", column: "manga_id"

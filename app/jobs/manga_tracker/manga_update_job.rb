@@ -2,7 +2,7 @@ module MangaTracker
   class MangaUpdateJob < ApplicationJob
     queue_as :manga_tracker
 
-    def perform(*args)
+    def perform
       chapters = []
       MangaTracker::Manga.all.each do |manga|
         request = Faraday.get(manga.feed_source)
@@ -25,17 +25,23 @@ module MangaTracker
         http_client.post do |request|
           request.headers = { "Content-Type": "application/json" }
           request.body = {
-            embeds: [
-              {
-                type: "rich",
-                title: "New chapters",
-                description: chapters.map(&:title).join("\n"),
-                color: 1752220
-              }
-            ]
+            embeds: embeds_from_chapters(chapters)
           }.to_json
         end
       end
     end
+
+    private
+
+      def embeds_from_chapters(chapters)
+        chapters.map do |chapter|
+          {
+            type: "rich",
+            url: chapter.manga.reader_url,
+            title: chapter.title,
+            color: 1752220
+          }
+        end
+      end
   end
 end
