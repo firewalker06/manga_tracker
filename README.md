@@ -1,3 +1,5 @@
+Replaced with: https://github.com/firewalker06/assembling_machine
+
 # MangaTracker
 Short description and motivation.
 
